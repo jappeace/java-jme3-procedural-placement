@@ -4,9 +4,6 @@
  */
 package nl.jappieklooster.JME3.ProceduralPlacement.Placer;
 
-import com.jme3.math.Vector3f;
-import com.jme3.scene.Node;
-
 /**
  *
  * @author jappie
@@ -18,7 +15,10 @@ public abstract class PlaceDecorator implements IPlacer{
         _component = component;
     }
 
-    public void place(Node on, Vector3f where) {
-        _component.place(on, where);
+    /**
+     * @return the _component
+     */
+    public IPlacer getComponent() {
+        return _component;
     }
 }

@@ -19,17 +19,21 @@ public abstract class SpatialPlacer implements ISpatialPlacer {
     private Vector3f _currentCell;
     private TerrainQuad _currentQuad;
     private Node _root;
+    private ISpatialFactory _factory;
     
-    public SpatialPlacer(Node root){
+    public SpatialPlacer(Node root, ISpatialFactory factory){
 	_root = root;
+        _factory = factory;
 	_nodes = new HashMap<Vector3f, Node>();
     }
     
     @Override
     public void place(Vector3f where) {	
 	place(
+            _factory.createSpatial(),
             _nodes.get(getCell()), 
 	    where
+            
 	);
     }
     

@@ -4,14 +4,12 @@
  */
 package nl.jappieklooster.JME3.ProceduralPlacement.Placer;
 
-import com.jme3.math.Vector3f;
-import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 
 /**
- *
+ * Use this interface to define how the spatials are created. Then this framework will place them.
  * @author jappie
  */
-public interface IPlacer {
-    public abstract void place(Spatial what, Node on, Vector3f where);
+public interface ISpatialFactory {
+    public Spatial createSpatial();
 }
