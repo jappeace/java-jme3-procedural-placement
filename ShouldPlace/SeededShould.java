@@ -14,20 +14,21 @@ import nl.jappieklooster.JME3.ProceduralPlacement.TerrainDataAcces;
 public class SeededShould extends TerrainDataAcces implements IShouldPlace{
     private String _seed;
     private static final float PER = 1500;
-    private int _placed = 0;
+    private int _placeCycle = 0;
     public SeededShould(String seed){
         _seed = seed;
     }
     public boolean shouldPlace(Vector3f where) {
-        if(_placed < PER){
-            _placed++;
+        if(_placeCycle < PER){
+            _placeCycle++;
             return false;
         }
-        _placed = 0;
-        return determinPlacement(where);
+        _placeCycle = 0;
+        boolean result = determinPlacement(where);
+        return result;
     }
     
     private boolean determinPlacement(Vector3f where){
-        return getCell().hashCode()*where.hashCode() < (_seed.hashCode() * where.x + where.y * where.z);
+        return getCell().hashCode()*where.hashCode() < (_seed.hashCode() * where.x + where.y * where.z );
     }
 }
