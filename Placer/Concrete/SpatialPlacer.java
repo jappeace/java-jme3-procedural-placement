@@ -1,17 +1,18 @@
-package nl.jappieklooster.JME3.ProceduralPlacement.Placer;
+package nl.jappieklooster.JME3.ProceduralPlacement.Placer.Concrete;
 
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Node;
 import com.jme3.terrain.geomipmap.TerrainQuad;
 import java.util.HashMap;
 import java.util.Map;
+import nl.jappieklooster.JME3.ProceduralPlacement.Placer.IPlacer;
 
 /**
  * Handles the mapping of spatials. Every cell gets its own node.
  * Also handles the loading and deloading of the spatials
  * @author jappie
  */
-public abstract class SpatialPlacer implements ISpatialPlacer {
+public abstract class SpatialPlacer implements IPlacer {
     private static final String NODE_PREFIX = "SpatialScene:";
     private static final float ROUNDING_CORRECTION = 0.1f;
     
@@ -30,7 +31,7 @@ public abstract class SpatialPlacer implements ISpatialPlacer {
     @Override
     public void place(Vector3f where) {	
 	place(
-            _factory.createSpatial(),
+            _factory.createSpatial(where),
             _nodes.get(getCell()), 
 	    where
             
@@ -99,4 +100,6 @@ public abstract class SpatialPlacer implements ISpatialPlacer {
     protected TerrainQuad getQuad() {
 	return _currentQuad;
     }
+    
+    
 }

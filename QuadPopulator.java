@@ -3,7 +3,7 @@ package nl.jappieklooster.JME3.ProceduralPlacement;
 import com.jme3.math.Vector3f;
 import com.jme3.terrain.geomipmap.TerrainGridListener;
 import com.jme3.terrain.geomipmap.TerrainQuad;
-import nl.jappieklooster.JME3.ProceduralPlacement.Placer.ISpatialPlacer;
+import nl.jappieklooster.JME3.ProceduralPlacement.Placer.IPlacer;
 import nl.jappieklooster.JME3.ProceduralPlacement.ShouldPlace.IShouldPlace;
 
 /**
@@ -14,7 +14,7 @@ import nl.jappieklooster.JME3.ProceduralPlacement.ShouldPlace.IShouldPlace;
  */
 public class QuadPopulator implements TerrainGridListener {
     private IShouldPlace _placeGaurd;
-    private ISpatialPlacer _spatialPlacer;
+    private IPlacer _spatialPlacer;
     
     /**
      * it is not very strange to have both interfaces be implemented in the same class
@@ -24,7 +24,7 @@ public class QuadPopulator implements TerrainGridListener {
 	this(placer, placer);
     }
     
-    public QuadPopulator(IShouldPlace placeGaurd, ISpatialPlacer spatialTracker){
+    public QuadPopulator(IShouldPlace placeGaurd, IPlacer spatialTracker){
 	_placeGaurd = placeGaurd;
 	_spatialPlacer = spatialTracker;
     }
