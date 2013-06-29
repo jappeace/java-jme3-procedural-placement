@@ -2,10 +2,13 @@ package nl.jappieklooster.JME3.ProceduralPlacement.Placer.Concrete;
 
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Node;
+import com.jme3.scene.Spatial;
 import com.jme3.terrain.geomipmap.TerrainQuad;
 import java.util.HashMap;
 import java.util.Map;
+import nl.jappieklooster.JME3.ProceduralPlacement.Placer.IPlacement;
 import nl.jappieklooster.JME3.ProceduralPlacement.Placer.IPlacer;
+import nl.jappieklooster.JME3.ProceduralPlacement.Placer.Placement;
 
 /**
  * Handles the mapping of spatials. Every cell gets its own node.
@@ -32,13 +35,19 @@ public abstract class SpatialPlacer implements IPlacer {
     }
     
     @Override
-    public void place(Vector3f where) {	
-	place(
-            _nodes.get(getCell()), 
-	    where
-	);
+    public IPlacement place(Vector3f where) {	
+        Node node = _nodes.get(getCell());
+	return new Placement(
+            place(
+                node, 
+                where
+            ),
+            node
+        );
     }
-    abstract void place(Node on, Vector3f where);
+    protected abstract Spatial place(Node on, Vector3f where);
+    
+    
     @Override
     public void onStartPlacing(){
  	if(! _nodes.containsKey(getCell())){
@@ -101,6 +110,8 @@ public abstract class SpatialPlacer implements IPlacer {
     protected TerrainQuad getQuad() {
 	return _currentQuad;
     }
+
+    
     
     
 }

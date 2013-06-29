@@ -8,7 +8,9 @@ import com.jme3.math.Vector3f;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import com.jme3.terrain.geomipmap.TerrainQuad;
+import nl.jappieklooster.JME3.ProceduralPlacement.Placer.IPlacement;
 import nl.jappieklooster.JME3.ProceduralPlacement.Placer.IPlacer;
+import nl.jappieklooster.vikingr.Engine.Log;
 
 /**
  *
@@ -24,12 +26,15 @@ public abstract class Decorator implements IPlacer{
     /**
      * @return the _component
      */
-    public IPlacer getComponent() {
+    private IPlacer getComponent() {
         return _component;
     }
 
-    public void place(Vector3f where) {
-        getComponent().place(where);
+    public IPlacement place(Vector3f where) {
+        IPlacement placement = getComponent().place(where);
+        // manual call is necisary because this method is called from the concrete's inside
+        place(placement.getWhat(), placement.getOn(), where);
+        return placement;
     }
 
     public void onFinishedPlacing() {

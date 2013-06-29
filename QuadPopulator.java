@@ -24,9 +24,9 @@ public class QuadPopulator implements TerrainGridListener {
 	this(placer, placer);
     }
     
-    public QuadPopulator(IShouldPlace placeGaurd, IPlacer spatialTracker){
+    public QuadPopulator(IShouldPlace placeGaurd, IPlacer spatialPlacer){
 	_placeGaurd = placeGaurd;
-	_spatialPlacer = spatialTracker;
+	_spatialPlacer = spatialPlacer;
     }
     
     @Override

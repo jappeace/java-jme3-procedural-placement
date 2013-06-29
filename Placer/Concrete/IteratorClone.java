@@ -24,9 +24,9 @@ public class IteratorClone extends ClonePlace{
     }
     
     @Override
-    void place(Node on, Vector3f where) {
+    protected Spatial place(Node on, Vector3f where) {
         setWhat(next());
-        super.place(on, where);
+        return super.place(on, where);
     }
     
     protected final Spatial next(){

@@ -14,7 +14,7 @@ public interface IPlacer extends IReceiveTerrainData{
      * places somthing on the coordinates where
      * @param where 
      */
-    public void place(Vector3f where);
+    public IPlacement place(Vector3f where);
     
     /**
      * should place a what on a on with coordinates where.

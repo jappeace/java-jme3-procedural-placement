@@ -6,6 +6,7 @@ package nl.jappieklooster.JME3.ProceduralPlacement.Placer.Concrete;
 
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Node;
+import com.jme3.scene.Spatial;
 
 /**
  *
@@ -20,7 +21,9 @@ public class CreatePlace extends Place{
     }
 
     @Override
-    void place(Node on, Vector3f where) {
-        place(_factory.createSpatial(where), on, where);
+    protected Spatial place(Node on, Vector3f where) {
+        Spatial creation = _factory.createSpatial(where);
+        place(creation, on, where);
+        return creation;
     }
 }

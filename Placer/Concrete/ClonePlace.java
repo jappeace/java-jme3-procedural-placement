@@ -20,8 +20,10 @@ public class ClonePlace extends Place{
     }
 
     @Override
-    void place(Node on, Vector3f where) {
-        place(_what.clone(), on, where);
+    protected Spatial place(Node on, Vector3f where) {
+        Spatial clone = _what.clone();
+        place(clone, on, where);
+        return clone;
     }
 
     /**
