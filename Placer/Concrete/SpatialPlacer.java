@@ -9,6 +9,7 @@ import java.util.Map;
 import nl.jappieklooster.JME3.ProceduralPlacement.Placer.IPlacement;
 import nl.jappieklooster.JME3.ProceduralPlacement.Placer.IPlacer;
 import nl.jappieklooster.JME3.ProceduralPlacement.Placer.Placement;
+import nl.jappieklooster.JME3.ProceduralPlacement.TerrainDataAcces;
 
 /**
  * Handles the mapping of spatials. Every cell gets its own node.
@@ -19,13 +20,10 @@ import nl.jappieklooster.JME3.ProceduralPlacement.Placer.Placement;
  * But I wanted to keep this in JME3 style.
  * @author jappie
  */
-public abstract class SpatialPlacer implements IPlacer {
+public abstract class SpatialPlacer extends TerrainDataAcces implements IPlacer {
     private static final String NODE_PREFIX = "SpatialScene:";
-    private static final float ROUNDING_CORRECTION = 0.1f;
     
     private Map<Vector3f, Node> _nodes;
-    private Vector3f _currentCell;
-    private TerrainQuad _currentQuad;
     private Node _root;
     
     
@@ -86,32 +84,5 @@ public abstract class SpatialPlacer implements IPlacer {
 	
 	setTerainData(null, null);
     }
-    @Override
-    public void setTerainData(Vector3f cell, TerrainQuad quad){
-	_currentCell = (cell == null) ? null : cell.clone();
-	_currentQuad = quad;
-        if(_currentCell != null){
-            // somthimes I get weird halve cell values this fixes that
-            _currentCell.x = Math.round(_currentCell.x + ROUNDING_CORRECTION);
-            _currentCell.z = Math.round(_currentCell.z + ROUNDING_CORRECTION);
-        }
-    }
-
-    /**
-     * @return the _currentCell
-     */
-    protected Vector3f getCell() {
-	return _currentCell;
-    }
-
-    /**
-     * @return the _currentQuad
-     */
-    protected TerrainQuad getQuad() {
-	return _currentQuad;
-    }
-
-    
-    
     
 }
