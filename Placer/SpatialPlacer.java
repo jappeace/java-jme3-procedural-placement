@@ -5,7 +5,6 @@ import com.jme3.scene.Node;
 import com.jme3.terrain.geomipmap.TerrainQuad;
 import java.util.HashMap;
 import java.util.Map;
-import nl.jappieklooster.JME3.ProceduralPlacement.ISpatialPlacer;
 
 /**
  * Handles the mapping of spatials. Every cell gets its own node.
@@ -33,7 +32,6 @@ public abstract class SpatialPlacer implements ISpatialPlacer {
 	    where
 	);
     }
-    protected abstract void place(Node on, Vector3f where);
     
     @Override
     public void onStartPlacing(){

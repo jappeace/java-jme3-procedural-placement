@@ -1,10 +1,11 @@
-package nl.jappieklooster.JME3.ProceduralPlacement.Placer;
+package nl.jappieklooster.JME3.ProceduralPlacement.Placer.Concrete;
 
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import java.util.Iterator;
 import java.util.List;
+import nl.jappieklooster.JME3.ProceduralPlacement.Placer.SpatialPlacer;
 
 /**
  * Places somthing without any decoration.
@@ -20,7 +21,7 @@ public class Plain extends SpatialPlacer{
     }
 
     @Override
-    protected void place(Node on, Vector3f where) {
+    public void place(Node on, Vector3f where) {
 	if(!_iterator.hasNext()){
 	    resetIterator();
 	}

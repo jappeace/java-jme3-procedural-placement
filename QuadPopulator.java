@@ -1,10 +1,10 @@
 package nl.jappieklooster.JME3.ProceduralPlacement;
 
-import nl.jappieklooster.JME3.ProceduralPlacement.ISpatialPlacer;
-import nl.jappieklooster.JME3.ProceduralPlacement.ShouldPlace.IShouldPlace;
 import com.jme3.math.Vector3f;
 import com.jme3.terrain.geomipmap.TerrainGridListener;
 import com.jme3.terrain.geomipmap.TerrainQuad;
+import nl.jappieklooster.JME3.ProceduralPlacement.Placer.ISpatialPlacer;
+import nl.jappieklooster.JME3.ProceduralPlacement.ShouldPlace.IShouldPlace;
 
 /**
  * Quad populator populates a quad by scrolling trough the heightmap and asking
