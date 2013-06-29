@@ -7,7 +7,9 @@ import com.jme3.terrain.geomipmap.TerrainGridListener;
 import com.jme3.terrain.geomipmap.TerrainQuad;
 
 /**
- *
+ * Quad populator populates a quad by scrolling trough the heightmap and asking
+ * the placegaurd if it can place somthing. If so it commands spatialplacer to
+ * place somthing.
  * @author jappie
  */
 public class QuadPopulator implements TerrainGridListener {
