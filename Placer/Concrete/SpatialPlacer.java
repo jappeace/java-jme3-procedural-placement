@@ -9,7 +9,11 @@ import nl.jappieklooster.JME3.ProceduralPlacement.Placer.IPlacer;
 
 /**
  * Handles the mapping of spatials. Every cell gets its own node.
- * Also handles the loading and deloading of the spatials
+ * Also handles the loading and deloading of the spatials.
+ * 
+ * Its subclasses handle the creation of things. This is important since my own library does not even
+ * use spatials (I wrap them in a class together with a physics controller). 
+ * But I wanted to keep this in JME3 style.
  * @author jappie
  */
 public abstract class SpatialPlacer implements IPlacer {
@@ -20,24 +24,21 @@ public abstract class SpatialPlacer implements IPlacer {
     private Vector3f _currentCell;
     private TerrainQuad _currentQuad;
     private Node _root;
-    private ISpatialFactory _factory;
     
-    public SpatialPlacer(Node root, ISpatialFactory factory){
+    
+    public SpatialPlacer(Node root){
 	_root = root;
-        _factory = factory;
 	_nodes = new HashMap<Vector3f, Node>();
     }
     
     @Override
     public void place(Vector3f where) {	
 	place(
-            _factory.createSpatial(where),
             _nodes.get(getCell()), 
 	    where
-            
 	);
     }
-    
+    abstract void place(Node on, Vector3f where);
     @Override
     public void onStartPlacing(){
  	if(! _nodes.containsKey(getCell())){
