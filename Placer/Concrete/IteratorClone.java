@@ -10,7 +10,8 @@ import com.jme3.scene.Spatial;
 import java.util.Iterator;
 
 /**
- * lets you define a collection of templates to clone spatials from.
+ * lets you define a collection of templates to clone spatials from. 
+ * ie <code>List<Spatial> || Set<Spatial></code>
  * @author jappie
  */
 public class IteratorClone extends ClonePlace{
