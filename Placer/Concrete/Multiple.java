@@ -5,16 +5,15 @@ import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import java.util.Iterator;
 import java.util.List;
-import nl.jappieklooster.JME3.ProceduralPlacement.Placer.SpatialPlacer;
 
 /**
  * Places somthing without any decoration.
  * @author jappie
  */
-public class Plain extends SpatialPlacer{
+public class Multiple extends ConcretePlacer{
     private Iterator<Spatial> _iterator;
     private List<Spatial> _templates;
-    public Plain(Node root, List<Spatial> templates){
+    public Multiple(Node root, List<Spatial> templates){
 	super(root);
 	_templates = templates;
 	resetIterator();
@@ -24,11 +23,8 @@ public class Plain extends SpatialPlacer{
     public void place(Node on, Vector3f where) {
 	if(!_iterator.hasNext()){
 	    resetIterator();
-	}
-	Spatial target = _iterator.next().clone();
-        
-	on.attachChild(target);
-	target.setLocalTranslation(where);
+	}        
+        super.place(on, where, _iterator.next().clone());
     }
     
     public final void resetIterator(){
