@@ -1,6 +1,8 @@
 package nl.jappieklooster.JME3.ProceduralPlacement.Placer;
 
 import com.jme3.math.Vector3f;
+import com.jme3.scene.Node;
+import com.jme3.scene.Spatial;
 import nl.jappieklooster.JME3.ProceduralPlacement.IReceiveTerrainData;
 
 /**
@@ -8,10 +10,20 @@ import nl.jappieklooster.JME3.ProceduralPlacement.IReceiveTerrainData;
  * @author jappie
  */
 public interface ISpatialPlacer extends IReceiveTerrainData, IPlacer{
+    /**
+     * places somthing on the coordinates where
+     * @param where 
+     */
     public void place(Vector3f where);
     
+    /**
+     * callback when there are no coordinates to place stuf on
+     */
     public void onFinishedPlacing();
     
+    /**
+     * callback for if a placing cycle starts.
+     */
     public void onStartPlacing();
     
     /**
@@ -19,4 +31,12 @@ public interface ISpatialPlacer extends IReceiveTerrainData, IPlacer{
      * quad that is set by IReceiveTerrainData
      */
     public void clear();
+    
+    /**
+     * should place a what on a on with coordinates where.
+     * @param what to be placed
+     * @param on to receive a what
+     * @param where place what on
+     */
+    public void place(Spatial what, Node on, Vector3f where);
 }
