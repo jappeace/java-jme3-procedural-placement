@@ -11,7 +11,7 @@ import com.jme3.terrain.geomipmap.TerrainQuad;
  *
  * @author jappie
  */
-public abstract class TerrainDataAcces implements IReceiveTerrainData{
+public abstract class TerrainDataAcces implements IPlaceCycleListener{
     private static final float ROUNDING_CORRECTION = 0.1f;
     
     private Vector3f _currentCell;

@@ -16,11 +16,11 @@ public interface IPlacement {
     /**
      * @return the _on
      */
-    Node getOn();
+    public Node getOn();
 
     /**
      * @return the _what
      */
-    Spatial getWhat();
+    public Spatial getWhat();
     
 }

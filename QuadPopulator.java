@@ -37,12 +37,14 @@ public class QuadPopulator implements TerrainGridListener {
     public void tileAttached(Vector3f cell, TerrainQuad quad) {
 	_placeGaurd.setTerainData(cell, quad);
 	_spatialPlacer.setTerainData(cell, quad);
-	
+	_placeGaurd.onStartPlacing();
+        _spatialPlacer.onStartPlacing();
+        
 	float[] heightMap = quad.getHeightMap();
 	
 	int z = 0, x = 0, size = heightMap.length;
         
-        _spatialPlacer.onStartPlacing();
+        
 	for(int i = 0; i < size; i++){
 	    x++;
 	    if(x >= quad.getTerrainSize()){
@@ -54,6 +56,7 @@ public class QuadPopulator implements TerrainGridListener {
 		_spatialPlacer.place(where);
 	    }
 	}
+        _placeGaurd.onFinishedPlacing();
 	_spatialPlacer.onFinishedPlacing();
 	
     }
