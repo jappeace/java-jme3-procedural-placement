@@ -1,7 +1,6 @@
 package nl.jappieklooster.JME3.ProceduralPlacement.ShouldPlace;
 
 import com.jme3.math.Vector3f;
-import com.jme3.terrain.geomipmap.TerrainQuad;
 
 /**
  * For game logic this makes no sense, But I needed some test logic
