@@ -6,7 +6,6 @@ import com.jme3.scene.Spatial;
 import com.jme3.terrain.geomipmap.TerrainQuad;
 import nl.jappieklooster.JME3.ProceduralPlacement.Placer.IPlacement;
 import nl.jappieklooster.JME3.ProceduralPlacement.Placer.IPlacer;
-import nl.jappieklooster.vikingr.Engine.Log;
 
 /**
  *

@@ -9,6 +9,9 @@ import com.jme3.scene.Spatial;
  * @author jappie
  */
 public abstract class Place extends SpatialPlacer{
+    public Place(){
+        super();
+    }
     public Place(Node root){
         super(root);
     }

@@ -1,7 +1,7 @@
 package nl.jappieklooster.JME3.ProceduralPlacement;
 
 import com.jme3.math.Vector3f;
-import com.jme3.terrain.geomipmap.TerrainGridListener;
+import com.jme3.scene.Node;
 import com.jme3.terrain.geomipmap.TerrainQuad;
 import nl.jappieklooster.JME3.ProceduralPlacement.Placer.IPlacer;
 import nl.jappieklooster.JME3.ProceduralPlacement.ShouldPlace.IShouldPlace;
@@ -12,9 +12,10 @@ import nl.jappieklooster.JME3.ProceduralPlacement.ShouldPlace.IShouldPlace;
  * place somthing.
  * @author jappie
  */
-public class QuadPopulator implements TerrainGridListener {
+public class QuadPopulator implements IQuadPopulator {
     private IShouldPlace _placeGaurd;
     private IPlacer _spatialPlacer;
+    private Node _placings;
     
     /**
      * it is not very strange to have both interfaces be implemented in the same class
@@ -44,6 +45,7 @@ public class QuadPopulator implements TerrainGridListener {
 	
 	int z = 0, x = 0, size = heightMap.length;
         
+        _placings = new Node(Utility.getRandomString());
         
 	for(int i = 0; i < size; i++){
 	    x++;
@@ -53,7 +55,7 @@ public class QuadPopulator implements TerrainGridListener {
 	    }
 	    Vector3f where = new Vector3f(x, heightMap[i], z);
 	    if(_placeGaurd.shouldPlace(where)){
-		_spatialPlacer.place(where);
+		_placings.attachChild(_spatialPlacer.place(where).getOn());
 	    }
 	}
         _placeGaurd.onFinishedPlacing();
@@ -67,6 +69,14 @@ public class QuadPopulator implements TerrainGridListener {
 	_spatialPlacer.clear();
 	_placeGaurd.setTerainData(null, null);
 	
+    }
+
+    /**
+     * @return the _placement
+     */
+    @Override
+    public Node getPlacings() {
+        return _placings;
     }
 
 }

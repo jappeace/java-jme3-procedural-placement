@@ -3,13 +3,13 @@ package nl.jappieklooster.JME3.ProceduralPlacement.Placer.Concrete;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
-import com.jme3.terrain.geomipmap.TerrainQuad;
 import java.util.HashMap;
 import java.util.Map;
 import nl.jappieklooster.JME3.ProceduralPlacement.Placer.IPlacement;
 import nl.jappieklooster.JME3.ProceduralPlacement.Placer.IPlacer;
 import nl.jappieklooster.JME3.ProceduralPlacement.Placer.Placement;
 import nl.jappieklooster.JME3.ProceduralPlacement.TerrainDataAcces;
+import nl.jappieklooster.JME3.ProceduralPlacement.Utility;
 
 /**
  * Handles the mapping of spatials. Every cell gets its own node.
@@ -26,6 +26,13 @@ public abstract class SpatialPlacer extends TerrainDataAcces implements IPlacer 
     private Map<Vector3f, Node> _nodes;
     private Node _root;
     
+    /**
+     * use default constructor if you intend to atach the node to somthing else. By for example
+     * using the IPlacement return value
+     */
+    public SpatialPlacer(){
+        this(new Node(Utility.getRandomString()));
+    }
     
     public SpatialPlacer(Node root){
 	_root = root;

@@ -10,8 +10,18 @@ import com.jme3.scene.Spatial;
  */
 public class ClonePlace extends Place{
     private Spatial _what;
+    
+    public ClonePlace(Spatial what){
+        super();
+        construct(what);
+    }
+    
     public ClonePlace(Node root, Spatial what){
         super(root);
+        construct(what);
+    }
+    
+    private void construct(Spatial what){
         _what = what;
     }
 

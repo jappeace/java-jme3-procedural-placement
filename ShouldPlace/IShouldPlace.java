@@ -1,6 +1,5 @@
 package nl.jappieklooster.JME3.ProceduralPlacement.ShouldPlace;
 
-import nl.jappieklooster.JME3.ProceduralPlacement.IPlaceCycleListener;
 import com.jme3.math.Vector3f;
 import nl.jappieklooster.JME3.ProceduralPlacement.IPlaceCycleListener;
 

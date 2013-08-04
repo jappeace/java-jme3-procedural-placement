@@ -10,12 +10,19 @@ import com.jme3.scene.Spatial;
  */
 public class CreatePlace extends Place{
     private ISpatialFactory _factory;
-    
+    public CreatePlace(ISpatialFactory factory){
+        super();
+        construct(factory);
+        
+    }
     public CreatePlace(Node root, ISpatialFactory factory){
 	super(root);
+        construct(factory);
+    }
+    
+    private void construct(ISpatialFactory factory){
         _factory = factory;
     }
-
     @Override
     protected Spatial place(Node on, Vector3f where) {
         Spatial creation = _factory.createSpatial(where);
